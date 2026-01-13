@@ -72,10 +72,9 @@ public class ArticuloService {
         publicacionAgrupadaService.crearOActualizar(producto.getId(), categoria.getId());
         
         auditoriaService.registrar(
+                vendedor.getId(),
             "PUBLICACION_ARTICULO",
-            "Vendedor " + vendedor.getId() + " publicó artículo en producto: " + producto.getNombre(),
-            vendedor.getId(),
-            null
+            "Vendedor " + vendedor.getId() + " publicó artículo en producto: " + producto.getNombre()
         );
         
         return articuloGuardado;
@@ -170,11 +169,10 @@ public class ArticuloService {
         );
         
         auditoriaService.registrar(
+                articulo.getVendedor().getId(),
             "VENTA_ARTICULO",
             "Artículo " + id + " marcado como VENDIDO. Slot liberado en categoría " + 
-            articulo.getProducto().getCategoria().getId(),
-            articulo.getVendedor().getId(),
-            null
+            articulo.getProducto().getCategoria().getId()
         );
         
         return guardado;

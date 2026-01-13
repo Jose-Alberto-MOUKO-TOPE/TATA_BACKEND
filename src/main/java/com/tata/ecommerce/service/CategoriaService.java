@@ -32,10 +32,9 @@ public class CategoriaService {
         Categoria nuevaCategoria = categoriaRepository.save(categoria);
         
         auditoriaService.registrar(
+                vendedorId,
             "SOLICITUD_CATEGORIA",
-            "Vendedor " + vendedorId + " solicitó nueva categoría: " + categoria.getNombre(),
-            vendedorId,
-            null
+            "Vendedor " + vendedorId + " solicitó nueva categoría: " + categoria.getNombre()
         );
         
         return nuevaCategoria;
@@ -56,10 +55,9 @@ public class CategoriaService {
         Categoria categoriaAprobada = categoriaRepository.save(categoria);
         
         auditoriaService.registrar(
+                adminId,
             "APROBACION_CATEGORIA",
-            "Admin " + adminId + " aprobó categoría: " + categoria.getNombre(),
-            null,
-            adminId
+            "Admin " + adminId + " aprobó categoría: " + categoria.getNombre()
         );
         
         return categoriaAprobada;
@@ -79,10 +77,9 @@ public class CategoriaService {
         Categoria categoriaRechazada = categoriaRepository.save(categoria);
         
         auditoriaService.registrar(
+                adminId,
             "RECHAZO_CATEGORIA",
-            "Admin " + adminId + " rechazó categoría: " + categoria.getNombre(),
-            null,
-            adminId
+            "Admin " + adminId + " rechazó categoría: " + categoria.getNombre()
         );
         
         return categoriaRechazada;

@@ -41,10 +41,10 @@ public class SlotService {
         SlotConfig guardado = slotConfigRepository.save(slotConfig);
         
         auditoriaService.registrar(
+                adminId,
             "ASIGNACION_SLOTS",
-            "Admin " + adminId + " asignó " + cantidadSlots + " slots a vendedor " + vendedorId + " en categoría " + categoriaId,
-            null,
-            adminId
+            "Admin " + adminId + " asignó " + cantidadSlots + " slots a vendedor " + vendedorId + " en categoría " + categoriaId
+
         );
         
         return guardado;

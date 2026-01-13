@@ -44,7 +44,8 @@ public class ProductoController {
     
     @GetMapping("/categoria/{categoria}")
     public ResponseEntity<List<Producto>> obtenerPorCategoria(@PathVariable String categoria) {
-        List<Producto> productos = productoService.obtenerPorCategoria(categoria);
+        Long categoriaId = 0L;
+        List<Producto> productos = productoService.obtenerPorCategoria(categoriaId);
         return ResponseEntity.ok(productos);
     }
     

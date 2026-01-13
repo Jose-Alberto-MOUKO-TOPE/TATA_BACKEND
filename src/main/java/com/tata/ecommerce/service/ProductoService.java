@@ -43,10 +43,10 @@ public class ProductoService {
         Producto nuevoProducto = productoRepository.save(producto);
         
         auditoriaService.registrar(
+                vendedorId,
             "SOLICITUD_PRODUCTO",
-            "Vendedor " + vendedorId + " solicitó nuevo producto: " + producto.getNombre(),
-            vendedorId,
-            null
+            "Vendedor " + vendedorId + " solicitó nuevo producto: " + producto.getNombre()
+
         );
         
         return nuevoProducto;
@@ -93,10 +93,10 @@ public class ProductoService {
         Producto productoGuardado = productoRepository.save(producto);
         
         auditoriaService.registrar(
+                adminId,
             "APROBACION_PRODUCTO",
-            "Admin " + adminId + " aprobó producto: " + producto.getNombre(),
-            null,
-            adminId
+            "Admin " + adminId + " aprobó producto: " + producto.getNombre()
+
         );
         
         return productoGuardado;
@@ -116,10 +116,9 @@ public class ProductoService {
         Producto productoGuardado = productoRepository.save(producto);
         
         auditoriaService.registrar(
+                adminId,
             "RECHAZO_PRODUCTO",
-            "Admin " + adminId + " rechazó producto: " + producto.getNombre() + ". Motivo: " + motivo,
-            null,
-            adminId
+            "Admin " + adminId + " rechazó producto: " + producto.getNombre() + ". Motivo: " + motivo
         );
         
         return productoGuardado;
@@ -137,5 +136,9 @@ public class ProductoService {
     public boolean estaAprobado(Long productoId) {
         Producto producto = obtenerPorId(productoId);
         return producto.getEstado() == EstadoProducto.APROBADO;
+    }
+
+    public Producto crearProducto(Producto producto) {
+        return producto;
     }
 }

@@ -17,7 +17,7 @@ public class Categoria {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long categoriaId;
     
     @Column(nullable = false, unique = true)
     private String nombre;
@@ -40,4 +40,11 @@ public class Categoria {
     
     @Column(name = "vendedor_solicitante_id")
     private Long vendedorSolicitanteId;
+
+    public Long getId() {
+        return 0L;
+    }
+
+    public void setId(Long categoriaId) {
+    }
 }

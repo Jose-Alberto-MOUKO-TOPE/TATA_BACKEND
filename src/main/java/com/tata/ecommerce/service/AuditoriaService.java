@@ -16,7 +16,7 @@ public class AuditoriaService {
     private AuditoriaRepository auditoriaRepository;
     
     @Transactional
-    public Auditoria registrarAccion(Long actorId, String accion, String descripcion) {
+    public Auditoria registrar(Long actorId, String accion, String descripcion) {
         Auditoria auditoria = new Auditoria();
         auditoria.setActorId(actorId);
         auditoria.setAccion(accion);
